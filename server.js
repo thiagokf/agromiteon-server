@@ -2,13 +2,12 @@ require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
-const path = require('path');
 
 const app = express();
 
 // middlewares
 app.use(cors({
-  origin: 'internationalagromiteon.netlify.app' 
+  origin: 'https://internationalagromiteon.com' 
 }));
 app.use(express.json());
 
@@ -16,8 +15,8 @@ app.use(express.json());
 const mongoURI =process.env.MONGO_URI; 
 
 mongoose.connect(mongoURI)
-  .then(() => console.log('✓ Conectado ao MongoDB com sucesso!'))
-  .catch(err => console.error('x Erro ao conectar ao MongoDB:', err));
+  .then(() => console.log('Conectado ao MongoDB'))
+  .catch(err => console.error('Erro ao conectar ao MongoDB:', err));
 
 // modelo de dados
 const LeadSchema = new mongoose.Schema({
@@ -58,12 +57,9 @@ app.post('/newsletter', async (req, res) => {
     }
 });
 
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log(`
-    =========================================
     Servidor rodando na porta ${PORT}
-    Acesse: http://localhost:${PORT}
-    =========================================
     `);
 });
