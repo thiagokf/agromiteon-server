@@ -11,22 +11,6 @@ app.use(cors({
   origin: 'internationalagromiteon.netlify.app' 
 }));
 app.use(express.json());
-app.use(express.static(path.join(__dirname, '../frontend')));
-
-// rota para o html
-app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, '../frontend', 'index.html'));
-});
-
-// Rota temporária para ver os inscritos
-app.get('/admin/leads', async (req, res) => {
-    try {
-        const leads = await Lead.find(); // Busca todos os registros
-        res.json(leads);
-    } catch (error) {
-        res.status(500).send("Erro ao buscar dados");
-    }
-});
 
 // config do mongo
 const mongoURI =process.env.MONGO_URI; 
