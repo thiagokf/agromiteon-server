@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
@@ -6,7 +7,9 @@ const path = require('path');
 const app = express();
 
 // middlewares
-app.use(cors());
+app.use(cors({
+  origin: 'internationalagromiteon.netlify.app' 
+}));
 app.use(express.json());
 app.use(express.static(path.join(__dirname, '../frontend')));
 
@@ -26,8 +29,7 @@ app.get('/admin/leads', async (req, res) => {
 });
 
 // config do mongo
-require('dotenv').config()
-const mongoURI = process.env.MONGO_URI; 
+const mongoURI =process.env.MONGO_URI; 
 
 mongoose.connect(mongoURI)
   .then(() => console.log('✓ Conectado ao MongoDB com sucesso!'))
