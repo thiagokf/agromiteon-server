@@ -6,9 +6,7 @@ const cors = require('cors');
 const app = express();
 
 // middlewares
-app.use(cors({
-  origin: 'https://internationalagromiteon.com' 
-}));
+app.use(cors());
 app.use(express.json());
 
 // config do mongo
