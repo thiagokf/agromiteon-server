@@ -25,6 +25,10 @@ const LeadSchema = new mongoose.Schema({
 
 const Lead = mongoose.model('Lead', LeadSchema);
 
+app.post('/', (req, res) =>{
+    res.status(200).send("servidor funcionando")
+})
+
 // rota para newsletter
 app.post('/newsletter', async (req, res) => {
     const { name, email } = req.body;
@@ -55,7 +59,7 @@ app.post('/newsletter', async (req, res) => {
     }
 });
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.PORT || 3000;
 app.listen(PORT, () => {
     console.log(`
     Servidor rodando na porta ${PORT}
