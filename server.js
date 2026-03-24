@@ -25,7 +25,7 @@ const LeadSchema = new mongoose.Schema({
 
 const Lead = mongoose.model('Lead', LeadSchema);
 
-app.post('/', (req, res) =>{
+app.get('/', (req, res) =>{
     res.status(200).send("servidor funcionando")
 })
 
