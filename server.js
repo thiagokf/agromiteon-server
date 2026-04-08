@@ -25,6 +25,7 @@ const LeadSchema = new mongoose.Schema({
 
 const Lead = mongoose.model('Lead', LeadSchema);
 
+// rota p/ cron job
 app.get('/', (req, res) =>{
     res.status(200).send("servidor funcionando")
 })
